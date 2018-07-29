@@ -21,17 +21,32 @@
 
 <?php include('inc/header.php'); ?>
 	<div class="container">
-		<h1>Visitors</h1>
-		<?php foreach($posts as $post) : ?>
-			<div class="well">
-				<h3><?php echo $post['id']; ?></h3>
-				Visitor: <?php echo $post['full_name']; ?><br>
-				Phone: <?php echo $post['phone']; ?>
-				<p>Errand: <?php echo $post['errand']; ?></p>
-				Arrived: <?php echo $post['arrive']; ?><br>
-				Left: <?php echo $post['depart']; ?><br>
-				Image: <?php echo $post['image_url']; ?><br>
-			</div>
-		<?php endforeach; ?>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Errand</th>
+          <th scope="col">Arrive</th>
+          <th scope="col">Leave</th>
+          <th scope="col">Photo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach($posts as $post) : ?>
+          <tr>
+            <th scope="row"> <?php echo $post['id']; ?> </th>
+                <td> <?php echo $post['full_name']; ?> </td>
+                <td> <?php echo $post['phone']; ?> </td>
+                <td> <?php echo $post['errand']; ?> </td>
+                <td> <?php echo $post['arrive']; ?> </td>
+                <td> <?php echo $post['depart']; ?> </td>
+                <td> <?php echo $post['image_url']; ?> </td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+
 	</div>
 <?php include('inc/footer.php'); ?>

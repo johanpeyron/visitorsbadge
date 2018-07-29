@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 	<html>
 		<head>
-			<title>PHP Blog</title>
-			<!-- <link rel="styleshett" type="text/css" href="https://bootswatch.com/4/cerulean/bootstrap.min.css"> -->
-			<!-- <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/simplex/bootstrap.min.css"> -->
-			<!-- <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/darkly/bootstrap.min.css"> -->
-			<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
+			<title>Visitors</title>
+			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		</head>
 	<body>
 	<?php include('navbar.php'); ?>
