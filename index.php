@@ -24,7 +24,6 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">id</th>
           <th scope="col">Name</th>
           <th scope="col">Phone</th>
           <th scope="col">Errand</th>
@@ -36,13 +35,12 @@
       <tbody>
         <?php foreach($posts as $post) : ?>
           <tr>
-            <th scope="row"> <?php echo $post['id']; ?> </th>
-                <td> <?php echo $post['full_name']; ?> </td>
-                <td> <?php echo $post['phone']; ?> </td>
-                <td> <?php echo $post['errand']; ?> </td>
-                <td> <?php echo $post['arrive']; ?> </td>
-                <td> <?php echo $post['depart']; ?> </td>
-                <td> <?php echo $post['image_url']; ?> </td>
+            <th scope="row"><a href="post.php?id=<?php echo $post['id']; ?>"><?php echo $post['full_name']; ?></a></th>
+            <td><?php echo $post['phone']; ?></td>
+            <td><?php echo $post['errand']; ?></td>
+            <td><?php echo $post['arrive']; ?></td>
+            <td><?php echo $post['depart']; ?></td>
+            <td><?php echo $post['image_url']; ?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>

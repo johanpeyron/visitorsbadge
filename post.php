@@ -6,7 +6,7 @@
 	$id = mysqli_real_escape_string($conn, $_GET['id']);
 
 	// Create Query
-	$query = 'SELECT * FROM posts WHERE id = '.$id;
+	$query = 'SELECT * FROM visitors WHERE visitors.id = '.$id;
 
 	// Get Result
 	$result = mysqli_query($conn, $query);
@@ -25,8 +25,8 @@
 	<?php include('inc/header.php'); ?>
 		<div class="container">
 			<a href="<?php echo ROOT_URL; ?>" class="btn btn-default">Back</a>
-			<h1><?php echo $post['title']; ?></h1>	
-			<small>Created on <?php echo $post['created_at']; ?> by <?php echo $post['author']; ?></small>
-			<p><?php echo $post['body']; ?></p>
+			<h1><?php echo $post['full_name']; ?></h1>	
+			<small>Phone: <?php echo $post['phone']; ?></small>
+			<p><?php echo $post['errand']; ?></p>
 		</div>
 	<?php include('inc/footer.php'); ?>
