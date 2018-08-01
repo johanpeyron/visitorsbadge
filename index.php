@@ -3,7 +3,7 @@
 	require('config/db.php');
 
 	// Create Query
-	$query = 'SELECT * FROM visitors ';
+	$query = 'SELECT * FROM visitors ORDER BY checkin DESC';
 
 	// Get Result
 	$result = mysqli_query($conn, $query);
@@ -25,21 +25,23 @@
       <thead>
         <tr>
           <th scope="col">Name</th>
+          <th scope="col">Company</th>
           <th scope="col">Phone</th>
           <th scope="col">Errand</th>
-          <th scope="col">Arrive</th>
-          <th scope="col">Leave</th>
+          <th scope="col">Checked in</th>
+          <th scope="col">Checked out</th>
           <th scope="col">Photo</th>
         </tr>
       </thead>
       <tbody>
         <?php foreach($posts as $post) : ?>
           <tr>
-            <th scope="row"><a href="post.php?id=<?php echo $post['id']; ?>"><?php echo $post['full_name']; ?></a></th>
+            <th scope="row"><a href="post.php?id=<?php echo $post['id']; ?>"><?php echo $post['name']; ?></a></th>
+            <td><?php echo $post['company']; ?></td>
             <td><?php echo $post['phone']; ?></td>
             <td><?php echo $post['errand']; ?></td>
-            <td><?php echo $post['arrive']; ?></td>
-            <td><?php echo $post['depart']; ?></td>
+            <td><?php echo $post['checkin']; ?></td>
+            <td><?php echo $post['checkout']; ?></td>
             <td><?php echo $post['image_url']; ?></td>
           </tr>
         <?php endforeach; ?>

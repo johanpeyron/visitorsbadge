@@ -6,7 +6,7 @@
 	$id = mysqli_real_escape_string($conn, $_GET['id']);
 
 	// Create Query
-	$query = 'SELECT * FROM visitors WHERE visitors.id = '.$id;
+	$query = 'SELECT * FROM visitors WHERE id = '.$id;
 
 	// Get Result
 	$result = mysqli_query($conn, $query);
@@ -25,7 +25,7 @@
 	<?php include('inc/header.php'); ?>
 		<div class="container">
 			<a href="<?php echo ROOT_URL; ?>" class="btn btn-default">Back</a>
-			<h1><?php echo $post['full_name']; ?></h1>	
+			<h1><?php echo $post['name']; ?></h1>	
 			<small>Phone: <?php echo $post['phone']; ?></small>
 			<p><?php echo $post['errand']; ?></p>
 		</div>
