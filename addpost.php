@@ -12,7 +12,12 @@
 		$checkin = mysqli_real_escape_string($conn,$_POST['checkin']);
 		$checkout = mysqli_real_escape_string($conn,$_POST['checkout']);
 
-		$query = "INSERT INTO visitors(title, author,body) VALUES('$title', '$author', '$body')";
+		/* $query = "INSERT INTO visitors(title, author,body) VALUES('$title', '$author', '$body')"; */
+
+		$query =
+		 "INSERT INTO visitors(
+			name, company, phone, errand, checkin, checkout)
+			VALUES('$name', '$company', '$phone', '$errand', CURRENT_TIMESTAMP, NULL)";
 
 		if(mysqli_query($conn, $query)){
 			header('Location: '.ROOT_URL.'');
@@ -49,7 +54,7 @@
 				<label>Check out</label>
 				<input type="text" name="checkout" class="form-control">
 			</div>
-			<input type="submit" name="submit" value="Submit" class="btn btn-primary">
+			<input type="submit" name="submit" value="New visitor" class="btn btn-primary">
 		</form>
 	</div>
 <?php include('inc/footer.php'); ?>
