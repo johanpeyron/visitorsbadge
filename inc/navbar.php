@@ -6,10 +6,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="<?php echo ROOT_URL; ?>">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="<?php echo ROOT_URL; ?>addpost.php">New visitor</a>
-        <a class="nav-item nav-link" href="#">Pricing</a>
-        <a class="nav-item nav-link disabled" href="#">Disabled</a>
+        <a class="nav-item nav-link active" href="<?php echo ROOT_URL; ?>addpost.php">Check in<span class="sr-only">(current)</span></a>
+        <!-- <a class="nav-item nav-link" href="<?php echo ROOT_URL; ?>addpost.php">Check out</a> -->
+        <!-- <a class="nav-item nav-link" href="#">Pricing</a>
+        <a class="nav-item nav-link disabled" href="#">Disabled</a> -->
       </div>
     </div>
   </nav>

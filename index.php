@@ -2,6 +2,18 @@
 	require('config/config.php');
 	require('config/db.php');
 
+  // Check for Submit
+  if (isset($_POST['update'])) {
+    $query = "UPDATE visitors SET checkout = NULL";
+
+    if (mysqli_query($conn, $query)) {
+      header('Location: '.ROOT_URL.'');
+    } else {
+      echo 'ERROR: '. mysqli_error($conn);
+    }
+  }
+
+
 	// Create Query
 	$query = 'SELECT * FROM visitors ORDER BY checkin DESC';
 
@@ -24,7 +36,6 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Leaving</th>
           <th scope="col">Name</th>
           <th scope="col">Company</th>
           <th scope="col">Phone</th>
@@ -37,9 +48,7 @@
       <tbody>
         <?php foreach($posts as $post) : ?>
           <tr>
-            <th scope="row"><a href="post.php?id=<?php echo $post['id']; ?>"><button type="button" class="btn btn-outline-dark btn-sm">CheckOut</button></a></th>
-            <!-- <th scope="row"><a href="post.php?id=<?php echo $post['id']; ?>"><?php echo $post['name']; ?></a></th> -->
-            <td><?php echo $post['name']; ?></td>
+            <th scope="row"><a href="post.php?id=<?php echo $post['id']; ?>" class="text-secondary"><?php echo $post['name']; ?></a></th>
             <td><?php echo $post['company']; ?></td>
             <td><?php echo $post['phone']; ?></td>
             <td><?php echo $post['errand']; ?></td>
@@ -50,6 +59,10 @@
         <?php endforeach; ?>
       </tbody>
     </table>
+
+    <form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
+      <input type="submit" value="Check In Everybody" name="update" class="btn btn-outline-dark">
+    </form>
 
 	</div>
 <?php include('inc/footer.php'); ?>

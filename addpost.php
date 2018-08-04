@@ -9,13 +9,9 @@
 		$name = mysqli_real_escape_string($conn, $_POST['name']);
 		$phone = mysqli_real_escape_string($conn,$_POST['phone']);
 		$errand = mysqli_real_escape_string($conn,$_POST['errand']);
-		$checkin = mysqli_real_escape_string($conn,$_POST['checkin']);
-		$checkout = mysqli_real_escape_string($conn,$_POST['checkout']);
-
-		/* $query = "INSERT INTO visitors(title, author,body) VALUES('$title', '$author', '$body')"; */
 
 		$query =
-		 "INSERT INTO visitors(
+			"INSERT INTO visitors(
 			name, company, phone, errand, checkin, checkout)
 			VALUES('$name', '$company', '$phone', '$errand', CURRENT_TIMESTAMP, NULL)";
 
@@ -25,7 +21,8 @@
 			echo 'ERROR: '. mysqli_error($conn);
 		}
 	}
-?>
+	
+	?>
 
 <?php include('inc/header.php'); ?>
 	<div class="container">
@@ -46,15 +43,15 @@
 				<label>Errand</label>
 				<textarea name="errand" class="form-control"></textarea>
 			</div>
-			<div class="form-group">
+			<!-- <div class="form-group">
 				<label>Check in</label>
 				<input type="text" name="checkin" class="form-control">
 			</div>
 			<div class="form-group">
 				<label>Check out</label>
 				<input type="text" name="checkout" class="form-control">
-			</div>
-			<input type="submit" name="submit" value="New visitor" class="btn btn-primary">
+			</div> -->
+			<input type="submit" name="submit" value="Check in" class="btn btn-primary">
 		</form>
 	</div>
 <?php include('inc/footer.php'); ?>

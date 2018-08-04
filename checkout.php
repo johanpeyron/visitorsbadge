@@ -3,12 +3,11 @@
 	require('config/db.php');
 
 		// Check For Submit
-		if(isset($_POST['update'])){
+		if(isset($_POST['checkout'])){
 			// Get form data
-			$update_id = mysqli_real_escape_string($conn, $_POST['update_id']);
+			$checkout_id = mysqli_real_escape_string($conn, $_POST['checkout_id']);
 	
-			$query = "UPDATE visitors SET checkout = CURRENT_TIMESTAMP  WHERE id = {$update_id}";
-			//var_dump($query);
+			$query = "UPDATE visitors SET checkout = CURRENT_TIMESTAMP  WHERE id = {$checkout_id}";
 	
 			if(mysqli_query($conn, $query)){
 				header('Location: '.ROOT_URL.'');
@@ -29,7 +28,7 @@
 
 		// Fetch Data
 		$post = mysqli_fetch_assoc($result);
-		//var_dump($post);
+		var_dump($post);
 
 		// Free Result
 		mysqli_free_result($result);
@@ -41,14 +40,14 @@
 
 	<?php include('inc/header.php'); ?>
 		<div class="container">
-		<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
+			<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
 			<h1><?php echo $post['name']; ?></h1>	
+
 			Phone: <?php echo $post['phone']; ?>
 			<p><?php echo $post['errand']; ?></p>
 			<a href="<?php echo ROOT_URL; ?>editpost.php" class="btn btn-outline-success">Print</a>
 			<a href="<?php echo ROOT_URL; ?>editpost.php" class="btn btn-outline-secondary">Change</a>
-			<input type="hidden" name="update_id" value="<?php echo $post['id']; ?>" class="btn btn-outline-dark">
-			<input type="submit" value="Check out" name="update" class="btn btn-outline-dark">
-		</form>
+			<a href="<?php echo ROOT_URL; ?>" class="btn btn-outline-dark">Check out</a>
+			</form>
 		</div>
 	<?php include('inc/footer.php'); ?>
