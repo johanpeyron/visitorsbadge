@@ -7,7 +7,7 @@
 			// Get form data
 			$update_id = mysqli_real_escape_string($conn, $_POST['update_id']);
 	
-			$query = "UPDATE visitors SET checkout = CURRENT_TIMESTAMP  WHERE id = {$update_id}";
+			$query = "UPDATE visitors SET checkout = NOW()  WHERE id = {$update_id}";
 			//var_dump($query);
 	
 			if(mysqli_query($conn, $query)){
@@ -23,13 +23,13 @@
 		
 		// Create Query
 		$query = 'SELECT * FROM visitors WHERE id = '.$id;
+		//var_dump($query);
 
 		// Get Result
 		$result = mysqli_query($conn, $query);
 
 		// Fetch Data
 		$post = mysqli_fetch_assoc($result);
-		//var_dump($post);
 
 		// Free Result
 		mysqli_free_result($result);
@@ -46,8 +46,10 @@
 			Phone: <?php echo $post['phone']; ?>
 			<p><?php echo $post['errand']; ?></p>
 			<a href="<?php echo ROOT_URL; ?>editpost.php" class="btn btn-outline-success">Print</a>
-			<a href="<?php echo ROOT_URL; ?>editpost.php" class="btn btn-outline-secondary">Change</a>
+			<a href="<?php echo ROOT_URL; ?>editpost.php?id=<?php echo $post['id']; ?>" class="btn btn-outline-secondary">Change</a>
+
 			<input type="hidden" name="update_id" value="<?php echo $post['id']; ?>" class="btn btn-outline-dark">
+
 			<input type="submit" value="Check out" name="update" class="btn btn-outline-dark">
 		</form>
 		</div>

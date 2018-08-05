@@ -6,15 +6,17 @@
 	if(isset($_POST['submit'])){
 		// Get form data
 		$update_id = mysqli_real_escape_string($conn, $_POST['update_id']);
-		$title = mysqli_real_escape_string($conn, $_POST['title']);
-		$body = mysqli_real_escape_string($conn, $_POST['body']);
-		$author = mysqli_real_escape_string($conn,$_POST['author']);
+		$name = mysqli_real_escape_string($conn, $_POST['name']);
+		$company = mysqli_real_escape_string($conn, $_POST['company']);
+		$phone = mysqli_real_escape_string($conn,$_POST['phone']);
+		$errand = mysqli_real_escape_string($conn,$_POST['errand']);
 
-		$query = "UPDATE posts SET 
-					title='$title',
-					author='$author',
-					body='$body' 
-						WHERE id = {$update_id}";
+		$query = "UPDATE  visitors
+							SET 		name = '$name',
+											company = '$company',
+											phone = '$phone',
+											errand = '$errand'
+							WHERE 	id = {$update_id}";
 
 		if(mysqli_query($conn, $query)){
 			header('Location: '.ROOT_URL.'');
@@ -27,14 +29,14 @@
 	$id = mysqli_real_escape_string($conn, $_GET['id']);
 
 	// Create Query
-	$query = 'SELECT * FROM posts WHERE id = '.$id;
+	$query = 'SELECT * FROM visitors WHERE id = '.$id;
 
 	// Get Result
 	$result = mysqli_query($conn, $query);
 
 	// Fetch Data
 	$post = mysqli_fetch_assoc($result);
-	//var_dump($posts);
+	//var_dump($post);
 
 	// Free Result
 	mysqli_free_result($result);
@@ -43,24 +45,28 @@
 	mysqli_close($conn);
 ?>
 
+
 <?php include('inc/header.php'); ?>
 	<div class="container">
-		<h1>Add Post</h1>
 		<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
 			<div class="form-group">
-				<label>Title</label>
-				<input type="text" name="title" class="form-control" value="<?php echo $post['title']; ?>">
+				<label>Name</label>
+				<input type="text" value="<?php echo $post['name']; ?>" name="name" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>Author</label>
-				<input type="text" name="author" class="form-control" value="<?php echo $post['author']; ?>">
+				<label>Company</label>
+				<input type="text" value="<?php echo $post['company']; ?>" name="company" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>Body</label>
-				<textarea name="body" class="form-control"><?php echo $post['body']; ?></textarea>
+				<label>Phone</label>
+				<input type="text" value="<?php echo $post['phone']; ?>" name="phone" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Errand</label>
+				<textarea name="errand" class="form-control"><?php echo $post['errand']; ?></textarea>
 			</div>
 			<input type="hidden" name="update_id" value="<?php echo $post['id']; ?>">
-			<input type="submit" name="submit" value="Submit" class="btn btn-primary">
+			<input type="submit" name="submit" value="Save changes" class="btn btn-primary">
 		</form>
 	</div>
 <?php include('inc/footer.php'); ?>
