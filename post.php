@@ -45,7 +45,8 @@
 			<h1><?php echo $post['name']; ?></h1>	
 			Phone: <?php echo $post['phone']; ?>
 			<p><?php echo $post['errand']; ?></p>
-			<a href="<?php echo ROOT_URL; ?>editpost.php" class="btn btn-outline-success">Print</a>
+			<!-- <button type="button" class="btn btn-primary" onclick="window.print()">Print</button> -->
+			<a href="<?php echo ROOT_URL; ?>postwithpicture.php?id=<?php echo $post['id']; ?>"><button type="button" class="btn btn-outline-primary">Print</button></a>
 			<a href="<?php echo ROOT_URL; ?>editpost.php?id=<?php echo $post['id']; ?>" class="btn btn-outline-secondary">Change</a>
 
 			<input type="hidden" name="update_id" value="<?php echo $post['id']; ?>" class="btn btn-outline-dark">
