@@ -10,12 +10,14 @@
 		$company = mysqli_real_escape_string($conn, $_POST['company']);
 		$phone = mysqli_real_escape_string($conn,$_POST['phone']);
 		$errand = mysqli_real_escape_string($conn,$_POST['errand']);
+		$image_url = mysqli_real_escape_string($conn,$_POST['image_url']);
 
 		$query = "UPDATE  visitors
 							SET 		name = '$name',
 											company = '$company',
 											phone = '$phone',
-											errand = '$errand'
+											errand = '$errand',
+											image_url = '$image_url'
 							WHERE 	id = {$update_id}";
 
 		if(mysqli_query($conn, $query)){
@@ -64,6 +66,10 @@
 			<div class="form-group">
 				<label>Errand</label>
 				<textarea name="errand" class="form-control"><?php echo $post['errand']; ?></textarea>
+			</div>
+			<div class="form-group">
+				<label>Photo</label>
+				<input type="text" value="<?php echo $post['image_url']; ?>" name="image_url" class="form-control">
 			</div>
 			<input type="hidden" name="update_id" value="<?php echo $post['id']; ?>">
 			<input type="submit" name="submit" value="Save changes" class="btn btn-primary">
