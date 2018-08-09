@@ -48,7 +48,7 @@
       <tbody>
         <?php foreach($posts as $post) : ?>
           <tr>
-            <th scope="row"><a href="post.php?id=<?php echo $post['id']; ?>" class="text-secondary"><?php echo $post['name']; ?></a></th>
+            <th scope="row"><a href="card.php?id=<?php echo $post['id']; ?>" class="text-secondary"><?php echo $post['name']; ?></a></th>
             <!-- <td><a href="postwithpicture.php?id=<?php echo $post['id']; ?>"<?php echo $post['company']; ?></a></td> -->
             <td><?php echo $post['company']; ?></td>
             <td><?php echo $post['phone']; ?></td>
