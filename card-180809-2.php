@@ -3,7 +3,7 @@
 	require('config/db.php');
 
 		// Check For Submit
-		if(isset($_POST['submit'])){
+		if(isset($_POST['update'])){
 			// Get form data
 			$update_id = mysqli_real_escape_string($conn, $_POST['update_id']);
 	
@@ -64,8 +64,6 @@
 			  <button type="button" class="btn btn-outline-secondary" onclick="window.print()">Print</button>
 				<!-- <a href="<?php echo ROOT_URL; ?>postwithpicture.php?id=<?php echo $post['id']; ?>"><button type="button" class="btn btn-outline-primary">Print</button></a> -->
 				<a href="<?php echo ROOT_URL; ?>editpost.php?id=<?php echo $post['id']; ?>" class="btn btn-outline-secondary">Change</a>
-			  <input type="hidden" name="update_id" value="<?php echo $post['id']; ?>">
-				<input type="submit" name="submit" class="btn btn-outline-secondary" value="Check out">
     	</div>
     </div>
 

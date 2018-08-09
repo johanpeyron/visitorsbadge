@@ -2,6 +2,18 @@
 	require('config/config.php');
 	require('config/db.php');
 
+  // Check for Submit
+  if (isset($_POST['update'])) {
+    $query = "UPDATE visitors SET checkin = now(), checkout = NULL";
+
+    if (mysqli_query($conn, $query)) {
+      header('Location: '.ROOT_URL.'');
+    } else {
+      echo 'ERROR: '. mysqli_error($conn);
+    }
+  }
+
+
 	// Create Query
 	$query = 'SELECT * FROM visitors ORDER BY checkin DESC';
 
@@ -30,6 +42,7 @@
           <th scope="col">Errand</th>
           <th scope="col">Checkin</th>
           <th scope="col">Checkout</th>
+          <th scope="col">Photo</th>
         </tr>
       </thead>
       <tbody>
@@ -42,9 +55,16 @@
             <td><?php echo $post['errand']; ?></td>
             <td><?php echo $post['checkin']; ?></td>
             <td><?php echo $post['checkout']; ?></td>
+            <td><?php echo $post['image_url']; ?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>
     </table>
+
+    <form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
+      <input type="submit" value="Check In Everybody" name="update" class="btn btn-outline-dark">
+      <a href="<?php echo ROOT_URL; ?>" class="btn btn-outline-secondary">Default startpage</a>
+    </form>
+
 	</div>
 <?php include('inc/footer.php'); ?>
