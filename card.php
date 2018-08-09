@@ -46,24 +46,24 @@
 		<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
     <div class="card" style="width: 18rem;">
 			<div class="p-0 card-header">
-				<img class="float-left" src="public/images/logo-lexicon-50.gif" alt="">
+				<img class="float-left" src="public/images/logo-lexicon.gif" alt="" width="58" height="20">
 			</div>
-			<img class="card-img-top" src="<?php echo $post['image_url']; ?>" alt="Card image cap">
+			<img class="card-img-top" src="<?php echo $post['image_url']; ?>" alt="">
       <div class="card-body">
         <h5 class="card-title"><?php echo $post['name']; ?></h5>
-        <p class="card-text"><?php echo $post['company']; ?></p>
-        <p class="card-text"><?php echo $post['phone']; ?></p>
-        <p class="card-text"><?php echo $post['errand']; ?></p>
-        <p class="card-text"><?php echo $post['checkin']; ?></p>
-        <p class="card-text"><?php echo $post['checkout']; ?></p>
-        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-			  <!-- <class="btn btn-primary" onclick="window.print()">Print</button> -->
-			  <button type="button" class="btn btn-outline-secondary" onclick="window.print()">Print</button>
-			<!-- <a href="<?php echo ROOT_URL; ?>postwithpicture.php?id=<?php echo $post['id']; ?>"><button type="button" class="btn btn-outline-primary">Print</button></a> -->
-			<a href="<?php echo ROOT_URL; ?>editpost.php?id=<?php echo $post['id']; ?>" class="btn btn-outline-secondary">Change</a>
-
-
       </div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item"><?php echo $post['company']; ?></li>
+				<li class="list-group-item"><?php echo $post['phone']; ?></li>
+				<li class="list-group-item"><?php echo $post['errand']; ?></li>
+				<li class="list-group-item"><?php echo $post['checkin']; ?></li>
+				<li class="list-group-item"><?php echo $post['checkout']; ?></li>
+			</ul>
+      <div class="card-body">
+			  <button type="button" class="btn btn-outline-secondary" onclick="window.print()">Print</button>
+				<!-- <a href="<?php echo ROOT_URL; ?>postwithpicture.php?id=<?php echo $post['id']; ?>"><button type="button" class="btn btn-outline-primary">Print</button></a> -->
+				<a href="<?php echo ROOT_URL; ?>editpost.php?id=<?php echo $post['id']; ?>" class="btn btn-outline-secondary">Change</a>
+    	</div>
     </div>
 
 		</form>
