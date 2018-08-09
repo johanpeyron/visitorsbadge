@@ -56,7 +56,13 @@
         <p class="card-text"><?php echo $post['errand']; ?></p>
         <p class="card-text"><?php echo $post['checkin']; ?></p>
         <p class="card-text"><?php echo $post['checkout']; ?></p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+			  <!-- <class="btn btn-primary" onclick="window.print()">Print</button> -->
+			  <button type="button" class="btn btn-outline-secondary" onclick="window.print()">Print</button>
+			<!-- <a href="<?php echo ROOT_URL; ?>postwithpicture.php?id=<?php echo $post['id']; ?>"><button type="button" class="btn btn-outline-primary">Print</button></a> -->
+			<a href="<?php echo ROOT_URL; ?>editpost.php?id=<?php echo $post['id']; ?>" class="btn btn-outline-secondary">Change</a>
+
+
       </div>
     </div>
 
