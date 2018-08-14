@@ -12,10 +12,15 @@
 		$checkin = mysqli_real_escape_string($conn,$_POST['checkin']);
 		$checkout = mysqli_real_escape_string($conn,$_POST['checkout']);
 
+		//var_dump($checkin);
+		//echo $checkin;
+
 		$query =
 			"INSERT INTO visitors(
 			name, company, phone, errand, checkin, checkout)
-			VALUES('$name', '$company', '$phone', '$errand', $checkin, $checkout)";
+			VALUES('$name', '$company', '$phone', '$errand', '$checkin', '$checkout')";
+		
+		echo $query;
 
 		if(mysqli_query($conn, $query)){
 			header('Location: '.ROOT_URL.'');
@@ -23,17 +28,7 @@
 			echo 'ERROR: '. mysqli_error($conn);
 		}
 	}
-	?>
-
-	<?php
-		$timestamp1 = strtotime('now');
-		$timestamp2 = strtotime('+90 minutes');
-		$nutid1 = date('ymd-H:i', $timestamp1);
-		$nutid2 = date('ymd H:i', $timestamp2);
-
-		$date=date_create("now");
-		echo date_format($date,"ymd H:i");
-	?>
+?>
 
 <?php include('inc/header.php'); ?>
 	<div class="container">
@@ -54,17 +49,61 @@
 				<label>Errand</label>
 				<textarea class="form-control" name="errand"></textarea>
 			</div>
-			<div class="form-group">
+
+      <div class="form-group">
 				<label>Check in</label>
-				<input type="datetime-local" class="form-control" name="checkin" default>
-				<?php echo $nutid1; ?>
-			</div>
-			<div class="form-group">
+        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+					<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" name="checkin"/>
+          <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+          </div>
+				</div>
+				<script type="text/javascript">
+					$(function () {
+						$('#datetimepicker1').datetimepicker({
+							locale: 'sv'
+						});
+					});
+				</script>
+      </div>
+
+      <div class="form-group">
 				<label>Check out</label>
-				<input type="datetime-local" class="form-control" name="checkout">
+        <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+					<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2" name="checkout"/>
+					<div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+						<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+					</div>
+				</div>
 				<small name="checkoutHelp" class="form-text text-muted">How long will your visitor stay?</small>
+				<script type="text/javascript">
+					$(function () {
+						$('#datetimepicker2').datetimepicker({
+							locale: 'sv'
+						});
+					});
+				</script>
 			</div>
-			<input type="submit" name="submit" value="Check in" class="btn btn-primary">
-		</form>
-	</div>
+
+        <div class="input-group mb-3">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile02"/>
+                <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+            </div>
+            <div class="input-group-append">
+                <button class="btn btn-primary">Upload</button>
+            </div>
+        </div>
+        <script>
+            $('#inputGroupFile02').on('change',function(){
+                //get the file name
+                var fileName = $(this).val();
+                //replace the "Choose a file" label
+                $(this).next('.custom-file-label').html(fileName);
+            })
+        </script>
+
+		<input type="submit" name="submit" value="Add visitor" class="btn btn-primary">
+	</form>
+</div>
 <?php include('inc/footer.php'); ?>

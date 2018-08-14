@@ -71,6 +71,37 @@
 				<label>Photo</label>
 				<input type="text" value="<?php echo $post['image_url']; ?>" name="image_url" class="form-control">
 			</div>
+
+			<div class="form-group">
+					<label>Check in</label>
+					<input type="text" class="form-control datetimepicker-input" id="datetimepicker1" data-toggle="datetimepicker" data-target="#datetimepicker1" name="checkin"/>
+				<script type="text/javascript">
+					$(function () {
+						$('#datetimepicker1').datetimepicker({
+							locale: 'sv'
+						});
+					});
+				</script>
+			</div>
+
+        <div class="form-group">
+				<label>Check out</label>
+        <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+					<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2" name="checkout"/>
+						<div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+							<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+						</div>
+        </div>
+				<small name="checkoutHelp" class="form-text text-muted">How long will your visitor stay?</small>
+            </div>
+			<script type="text/javascript">
+				$(function () {
+					$('#datetimepicker2').datetimepicker({
+						locale: 'sv'
+					});
+				});
+			</script>
+
 			<input type="hidden" name="update_id" value="<?php echo $post['id']; ?>">
 			<input type="submit" name="submit" value="Save changes" class="btn btn-primary">
 		</form>

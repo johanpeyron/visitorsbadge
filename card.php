@@ -31,20 +31,32 @@
 		// Fetch Data
 		$post = mysqli_fetch_assoc($result);
 		//var_dump($post);
+		//print_r($post) ."<br>";
+		//echo ('$post["name"] = '. $post['name']);
+		
+		//var_dump($post[2]);
     
 		// Free Result
 		mysqli_free_result($result);
     
 		// Close Connection
 		mysqli_close($conn);
-    
+		
+		// QR Code text
+		$qrcodetext = $post['name'] .", " .$post['company'] .", " .$post['phone'];
+		//var_dump($qrcodetext);
 
     ?>
 
 	<?php include('inc/header.php'); ?>
   <div class="container">
-		<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
-    <div class="card" style="width: 18rem;">
+		<div class="card" style="width: 20rem;">
+			<div class="container">
+				<input type="text" id="text" value="<?php echo $qrcodetext; ?>" style="width:80%;display:none;"/><br>
+				<div id="qrcode" style="width:100px;" class="m-0"></div><br>
+				<!-- <button class="btn btn-primary" onclick="makeCode()">Create code</button> -->
+			</div>
+			<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
 			<div class="p-0 card-header">
 				<img class="float-left" src="public/images/logo-lexicon.gif" alt="" width="58" height="20">
 			</div>
@@ -61,14 +73,49 @@
         <class="card-text"><?php echo $post['checkin']; ?><br>
         <class="card-text"><small class="text-muted">Check out</small><br>
         <class="card-text"><?php echo $post['checkout']; ?><br>
-			  <button type="button" class="btn btn-outline-secondary" onclick="window.print()">Print</button>
+			  <button type="button" class="btn btn-primary btn-sm" onclick="window.print()">Print</button>
 				<!-- <a href="<?php echo ROOT_URL; ?>postwithpicture.php?id=<?php echo $post['id']; ?>"><button type="button" class="btn btn-outline-primary">Print</button></a> -->
-				<a href="<?php echo ROOT_URL; ?>editpost.php?id=<?php echo $post['id']; ?>" class="btn btn-outline-secondary">Change</a>
+				<a href="<?php echo ROOT_URL; ?>editpost.php?id=<?php echo $post['id']; ?>" class="btn btn-primary btn-sm">Change</a>
 			  <input type="hidden" name="update_id" value="<?php echo $post['id']; ?>">
-				<input type="submit" name="submit" class="btn btn-outline-secondary" value="Check out">
+				<input type="submit" name="submit" class="btn btn-primary btn-sm" value="Check out">
+				<a href="<?php echo ROOT_URL; ?>deletepost.php?id=<?php echo $post['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
     	</div>
+			</form>
     </div>
 
-		</form>
     </div>
+		<script type="text/javascript">
+		var qrcode = new QRCode(document.getElementById("qrcode"), {
+			width : 100,
+			height : 100
+		});
+
+		function makeCode () {		
+			var elText = document.getElementById("text");
+			
+			if (!elText.value) {
+				alert("Input a text");
+				elText.focus();
+				return;
+			}
+			
+			qrcode.makeCode(elText.value);
+		}
+
+		makeCode();
+
+		/* 
+		$("#text").
+			on("blur", function () {
+				makeCode();
+			}).
+			on("keydown", function (e) {
+				if (e.keyCode == 13) {
+					makeCode();
+				}
+			});
+		*/
+		</script>
+
+
 	<?php include('inc/footer.php'); ?>

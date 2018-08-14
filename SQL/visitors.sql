@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2018 at 07:07 AM
+-- Generation Time: Aug 11, 2018 at 08:31 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -44,9 +44,13 @@ CREATE TABLE `visitors` (
 --
 
 INSERT INTO `visitors` (`id`, `company`, `name`, `phone`, `errand`, `checkin`, `checkout`, `image_url`) VALUES
-(6, '', 'Chico Marx', '', 'Play the piano', '2018-07-28 05:27:44', NULL, NULL),
-(7, '', 'Harpo Marx', '', 'Play the harp', '2018-07-28 05:27:44', NULL, NULL),
-(8, '', 'Groucho Marx', '', 'Sing \"Lydia the tatooed lady\"', '2018-07-28 05:30:10', NULL, NULL);
+(6, 'Metro-Goldwyn-Mayer', 'Chico Marx', '1887-03-22-1961-10-11', 'Play the piano', '2018-08-09 19:58:58', NULL, 'public/images/visitor/6.jpg'),
+(7, 'Metro-Goldwyn-Mayer', 'Harpo Marx', '1888-11-23-1964-09-28', 'Play the harp', '2018-08-09 19:58:58', NULL, 'public/images/visitor/7.jpg'),
+(8, 'Metro-Goldwyn-Mayer', 'Groucho Marx', '1890-10-02-1977-08-19', 'Sing \"Lydia the tatooed lady\"', '2018-08-09 19:58:58', NULL, 'public/images/visitor/8.jpg'),
+(9, 'United Artists', 'Charles Spencer Chaplin', '1889-04-16-1977-12-25', 'Lecture \"How I made the transition to talkies\"', '2018-08-09 19:58:58', NULL, 'public/images/visitor/9.jpg'),
+(10, 'Columbia Pictures', 'Buster Keaton', '1895-10-04-1966-02-01', 'Lecture \"My father and I\"', '2018-08-09 19:58:58', NULL, 'public/images/visitor/10.jpg'),
+(11, 'dictator of Tomania', 'Adenoid Hynkel', '8888', 'Lecture \"My future plans and ambitions\"', '2018-08-09 19:58:58', NULL, 'public/images/visitor/11.jpg'),
+(12, '', 'test', '', '', '2018-08-11 17:36:00', '0000-00-00 00:00:00', NULL);
 
 --
 -- Indexes for dumped tables
@@ -66,7 +70,7 @@ ALTER TABLE `visitors`
 -- AUTO_INCREMENT for table `visitors`
 --
 ALTER TABLE `visitors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

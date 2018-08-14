@@ -4,7 +4,7 @@
 
   // Check for Submit
   if (isset($_POST['update'])) {
-    $query = "UPDATE visitors SET checkin = now(), checkout = NULL";
+    $query = "UPDATE visitor2s SET checkin = now(), checkout = NULL";
 
     if (mysqli_query($conn, $query)) {
       header('Location: '.ROOT_URL.'');
