@@ -11,38 +11,17 @@
 		$phone = mysqli_real_escape_string($conn,$_POST['phone']);
 		$errand = mysqli_real_escape_string($conn,$_POST['errand']);
 		$image_url = mysqli_real_escape_string($conn,$_POST['image_url']);
-		$checkin = mysqli_real_escape_string($conn,$_POST['checkin']);
-		$checkout = mysqli_real_escape_string($conn,$_POST['checkout']);
-		//var_dump($checkin) ."<br>";
-		//echo "$checkin = " .$checkin ."<br>";
-		//var_dump($checkout);
-		//echo "$checkout = " .$checkout ."<br><br><br>";
-
-		if ($checkin == '') {
-			$checkin = NULL;
-		}
-		if ($checkout == '') {
-			$checkout = NULL;
-		}
-		var_dump($checkin) ."<br>";
-		var_dump($checkout) ."<br>";
-
 
 		$query = "UPDATE  visitors
 							SET 		name = '$name',
 											company = '$company',
 											phone = '$phone',
 											errand = '$errand',
-											image_url = '$image_url',
-											checkin = '$checkin',
-											checkout = '$checkout'
+											image_url = '$image_url'
 							WHERE 	id = {$update_id}";
 
-		echo "$query = " .$query ."<br>";
-		var_dump($query);
-
 		if(mysqli_query($conn, $query)){
-			/* header('Location: '.ROOT_URL.''); */
+			header('Location: '.ROOT_URL.'');
 		} else {
 			echo 'ERROR: '. mysqli_error($conn);
 		}
@@ -93,33 +72,28 @@
 				<input type="text" value="<?php echo $post['image_url']; ?>" name="image_url" class="form-control">
 			</div>
 
-      <div class="form-group">
+			<div class="form-group">
 					<label>Check in</label>
-					<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-						<input type="text" value="<?php echo $post['checkin']; ?>" class="form-control datetimepicker-input" data-target="#datetimepicker1" name="checkin"/>
-							<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-								<div class="input-group-text"><i class="fa fa-calendar"></i></div>
-							</div>
-					</div>
-      </div>
-			<script type="text/javascript">
-				$(function () {
-					$('#datetimepicker1').datetimepicker({
-						locale: 'sv'
+					<input type="text" class="form-control datetimepicker-input" id="datetimepicker1" data-toggle="datetimepicker" data-target="#datetimepicker1" name="checkin"/>
+				<script type="text/javascript">
+					$(function () {
+						$('#datetimepicker1').datetimepicker({
+							locale: 'sv'
+						});
 					});
-				});
-			</script>
+				</script>
+			</div>
 
-      <div class="form-group">
-					<label>Check out</label>
-					<div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-						<input type="text" value="<?php echo $post['checkout']; ?>" class="form-control datetimepicker-input" data-target="#datetimepicker2" name="checkout"/>
-							<div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
-								<div class="input-group-text"><i class="fa fa-calendar"></i></div>
-							</div>
-					</div>
-					<small name="checkoutHelp" class="form-text text-muted">How long will your visitor stay?</small>
-      </div>
+        <div class="form-group">
+				<label>Check out</label>
+        <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+					<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2" name="checkout"/>
+						<div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+							<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+						</div>
+        </div>
+				<small name="checkoutHelp" class="form-text text-muted">How long will your visitor stay?</small>
+            </div>
 			<script type="text/javascript">
 				$(function () {
 					$('#datetimepicker2').datetimepicker({

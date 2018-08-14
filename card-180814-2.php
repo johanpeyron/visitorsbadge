@@ -7,8 +7,8 @@
 			// Get form data
 			$update_id = mysqli_real_escape_string($conn, $_POST['update_id']);
 	
-			$query = "UPDATE visitors SET checkout = NOW() WHERE id = {$update_id}";
-			var_dump($query);
+			$query = "UPDATE visitors SET checkout = NOW()  WHERE id = {$update_id}";
+			//var_dump($query);
       
 			if(mysqli_query($conn, $query)){
         header('Location: '.ROOT_URL.'');
@@ -81,12 +81,12 @@
 					<div class="container">
 							<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
 
-								<input type="text"" id="text" value="<?php echo $qrcodetext; ?>" style="width:80%;display:none;"/><br>
-								<button type="button" class="btn btn-primary btn-sm mb-2 onclick="window.print()">Print</button>
-								<a href="<?php echo ROOT_URL; ?>editpost.php?id=<?php echo $post['id']; ?>" class="btn btn-primary btn-sm mb-2">Change</a>
+								<input type="text" id="text" value="<?php echo $qrcodetext; ?>" style="width:80%;display:none;"/><br>
+								<button type="button" class="btn btn-primary btn-sm" onclick="window.print()">Print</button>
+								<a href="<?php echo ROOT_URL; ?>editpost.php?id=<?php echo $post['id']; ?>" class="btn btn-primary btn-sm">Change</a>
 								<input type="hidden" name="update_id" value="<?php echo $post['id']; ?>">
-								<input type="submit" name="submit" class="btn btn-primary btn-sm mb-2" value="Check out now">
-								<a href="<?php echo ROOT_URL; ?>deletepost.php?id=<?php echo $post['id']; ?>" class="btn btn-danger btn-sm mb-2">Delete</a>
+								<input type="submit" name="submit" class="btn btn-primary btn-sm" value="Check out">
+								<a href="<?php echo ROOT_URL; ?>deletepost.php?id=<?php echo $post['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
 
 							</form>
 					</div>
